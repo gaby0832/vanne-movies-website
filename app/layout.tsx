@@ -38,7 +38,7 @@ export default function RootLayout({
     >
       
       <body className="min-h-full flex flex-col bg-[#080808]" cz-shortcut-listen="true">
-        <header className="z-1001 fixed w-full h-16 bg-[#080808]">
+        <header className="z-40 fixed w-full h-16 bg-[#080808]">
           <nav className="text-white max-w-6xl h-full flex gap-3 my-0 mx-auto justify-items-center justify-between items-center">
 
             <Link href="/">

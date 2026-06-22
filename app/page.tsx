@@ -3,6 +3,7 @@ import Image from "next/image";
 import { KeyObject } from "node:crypto";
 import { useEffect, useState } from "react";
 import MovieList from './components/movieList'
+import Loading from "./components/loadingOverlay";
 
 export default function Home() {
 
@@ -40,7 +41,8 @@ export default function Home() {
 
   
 
-
+  if (!movie) return <Loading/>
+  else
   return (
     <div className="py-3 max-w-6xl my-0 mx-auto flex flex-col gap-4 text-white bg-[#080808] font-sans">
       {movie.length > 0 ?  

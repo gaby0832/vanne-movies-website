@@ -1,24 +1,20 @@
 "use client"
+import "../globals.css";
 import Image from "next/image";
-import { KeyObject } from "node:crypto";
-import { useEffect, useState } from "react";
 
-export default function MovieList({ genre }: {genre: string}) {
-
-  useEffect(()=>{
-
-  },[])
-
-
-
-
-
-
-
+export default function Loading() {
 
   return (
-    <div className="py-2 max-w-6xl my-0 mx-auto grid grid-cols-6 gap-8 items-center justify-center font-sans">
-
+    <div className="top-0 left-0 fixed w-full h-full z-50 py-2 my-0 mx-auto grid items-center justify-center font-sans bg-[#080808]">
+      <div className="animate-heartbeat">
+        <Image
+        width={400}
+        height={0}
+        src="/logonav.png"
+        alt="Vanne Filmes"
+        loading="eager"
+        />
+      </div>  
     </div>
   );
 }

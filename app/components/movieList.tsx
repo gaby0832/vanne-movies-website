@@ -35,7 +35,7 @@ export default function MovieList({ items, type }: {items: any[], type: string})
           {items ? items.map((index:any, key:number) =>(
             <div className="embla__slide" key={key} >
               <Link href={`${type !== "all"? type : index.media_type}/${index.id}`}>
-                <Image loading="eager" className="rounded-xl cursor-pointer scale-90 hover:scale-95 transition-transform" alt={index.title} width={250} height={0} src={`https://media.themoviedb.org/t/p/w220_and_h330_face${index.poster_path}`} alt={index.title ? index.title : index.name}/>
+                <Image loading="eager" className="rounded-xl cursor-pointer scale-90 hover:scale-95 transition-transform" width={250} height={0} src={`https://media.themoviedb.org/t/p/w220_and_h330_face${index.poster_path}`} alt={index.title ? index.title : index.name}/>
               </Link>
             </div>
           )) : ""}

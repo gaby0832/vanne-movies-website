@@ -37,7 +37,7 @@ export default function SingleMovie({
     },[movie])
   
   
-  if (movie.length <= 0) return <Loading/>
+  if (!movie) return <Loading/>
   else
   return (
     <div className="py-3 w-full max-w-6xl my-0 mx-auto flex flex-col gap-4 text-white bg-[#080808] font-sans">

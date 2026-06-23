@@ -9,7 +9,7 @@ export default function Home() {
 
 
     const [movies, setMovies] = useState<Array<any>>([]);
-    const [media, setMedia] = useState<Array<any>>([]);
+    const [media, setMedia] = useState<any>(null);
   
 
     useEffect(()=>{

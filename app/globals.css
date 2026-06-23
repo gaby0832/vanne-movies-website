@@ -153,3 +153,19 @@
 .animate-heartbeat {
   animation: heartbeat 1.5s ease infinite;
 }
+
+.embla {
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  gap: 0;
+}
+
+.embla__slide {
+  flex: 0 0 16.666%;
+}

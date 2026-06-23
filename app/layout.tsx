@@ -22,7 +22,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.png",
   },
-  images: ["/logo.png"],
+  openGraph: {
+    title: 'Vanne Filmes Oficial',
+    description: 'Plataforma de doações para react de filmes',
+    images: ['/logonav.png'],
+  },
   title: "Vanne Filmes Oficial",
   description: "Plataforma de doações para react de filmes",
 };

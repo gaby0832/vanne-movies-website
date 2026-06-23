@@ -12,7 +12,7 @@ export default function SingleMovie({
 
   
   
-    const [movie, setMovie] = useState<Array<any>>([]);
+    const [movie, setMovie] = useState<any>([]);
   
 
     useEffect(()=>{

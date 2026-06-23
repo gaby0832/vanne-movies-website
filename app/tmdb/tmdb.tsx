@@ -15,7 +15,7 @@ const basicFetch = async (att: string) => {
     return results;
 }
 
-const movieFetch = async (id, type) => {
+const movieFetch = async (id: any, type) => {
     const response = await fetch(`${tmdbUrl}${type}/${id}?language=pt-BR`, {
         method: 'GET',
         headers: {
@@ -54,7 +54,7 @@ export default {
             },       
         ]
     },
-    getSingleMovie: async (id: string, type: string) => {
+    getSingleMovie: async (id: any, type: string) => {
         return  await movieFetch(id, type);
     }
 }

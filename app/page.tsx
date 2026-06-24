@@ -8,6 +8,8 @@ import tmdb from './tmdb/tmdb'
 export default function Home() {
 
 
+  
+    const [moviesDay, setMoviesDay] = useState<any>(null)
     const [movies, setMovies] = useState<Array<any>>([]);
     const [media, setMedia] = useState<any>(null);
   
@@ -23,7 +25,7 @@ export default function Home() {
       const randomMovie = await  Homelist[0].items[randomInt]; 
       
       setMovies(Homelist);
-      setMedia(randomMovie);
+      setMedia(!moviesDay ? randomMovie : moviesDay);
 
     } catch (error) {
       console.error('Erro de registro:', error);
@@ -43,12 +45,12 @@ export default function Home() {
       {media ?  
     <div className="my-5 w-full h-120 bg-black rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${media.backdrop_path})`}}>
       <div className="w-full h-full bg-black/60 rounded-xl bg-center bg-cover flex flex-col gap-2 items-start justify-center px-10">
-        <h1 className="text-6xl font-semibold">React</h1>
+      <h1 className="text-6xl font-semibold">{!moviesDay ? "Recomendação" : "React"}</h1>
         <h1 className="text-7xl font-bold">{media.title ? media.title : media.name}</h1>
       <p className="font-light max-w-3xl">{media.overview.length > 300 ? media.overview.substring(0, 300)+"..." : media.overview}</p>
       <div className="py-2 grid grid-cols-2 gap-4 w-full max-w-2xs">
-        <button className="text-sm w-full h-full bg-[#03C210]/25 text-[#03C210] px-3 rounded-3xl outline-none decoration-[#4A4A4A] py-3 border-[0.2] border-[#03C210]">Hoje</button>
-        <button className="text-sm w-full h-full bg-[#AE00FF]/25 text-[#AE00FF] px-3 rounded-3xl outline-none decoration-[#4A4A4A] py-3 border-[0.2] border-[#AE00FF]">Ver na Twitch</button>
+        {moviesDay ?  <button className="text-sm w-full h-full bg-[#03C210]/25 text-[#03C210] px-3 rounded-3xl outline-none decoration-[#4A4A4A] py-3 border-[0.2] border-[#03C210]">Hoje</button> : ""}
+        {moviesDay ? <button className="text-sm w-full h-full bg-[#AE00FF]/25 text-[#AE00FF] px-3 rounded-3xl outline-none decoration-[#4A4A4A] py-3 border-[0.2] border-[#AE00FF]">Ver na Twitch</button> : ""}
       </div>
       </div>
       </div>

@@ -2,6 +2,7 @@
 import Loading from "@/app/components/loadingOverlay";
 import { useEffect, useState } from "react";
 import tmdb from '../../tmdb/tmdb'
+import MovieList from "@/app/components/movieList";
 
 
 export default function SingleMovie({
@@ -10,9 +11,8 @@ export default function SingleMovie({
   params: Promise<{ id: string }>
 }) {
 
-  
-  
     const [movie, setMovie] = useState<any>(null);
+    const [listRecomandation, setListRecomendation] = useState<any>(null)
   
 
     useEffect(()=>{
@@ -21,8 +21,11 @@ export default function SingleMovie({
     try {
 
       const { id } = await params
+
       const movie = await tmdb.getSingleMovie(id, "tv")
+      const list = await tmdb.getGenresList(id, "tv");
       setMovie(movie);
+      setListRecomendation(list);
 
     } catch (error) {
       console.error('Erro de registro:', error);
@@ -35,6 +38,10 @@ export default function SingleMovie({
     useEffect(()=>{
       console.log(movie)
     },[movie])
+
+    useEffect(()=>{
+      console.log(listRecomandation)
+    },[listRecomandation])
   
   
   if (!movie) return <Loading/>
@@ -44,7 +51,7 @@ export default function SingleMovie({
       {movie ?  
     <div className="my-5 w-full h-130 bg-black rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path}`}}>
       <div className="w-full h-full bg-black/60 rounded-xl bg-center bg-cover flex flex-col gap-2 items-start justify-center px-10">
-        <h1 className="text-6xl font-semibold">React</h1>
+        <h1 className="text-6xl font-semibold">Série</h1>
         <h1 className="text-7xl font-bold">{movie.name}</h1>
       <p className="font-light max-w-3xl">{movie.overview.length > 300 ? movie.overview.substring(0, 300)+"..." : movie.overview}</p>
       <div>
@@ -65,6 +72,15 @@ export default function SingleMovie({
       :
       ""
       }
+
+
+      {listRecomandation ? listRecomandation.map((index:any, key:number) =>(
+                    <div className="w-full py-5" key={key}>
+                      <h1 className="text-xl font-semibold tracking-wide py-2">{index.title}</h1>
+                       <MovieList items={index.items} type="tv" /> 
+                    </div>
+            )) : ""}
+
     </div>
   );
 }

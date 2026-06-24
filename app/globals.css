@@ -154,8 +154,6 @@
   animation: heartbeat 1.5s ease infinite;
 }
 
-.embla {
-}
 
 .embla__viewport {
   overflow: hidden;
@@ -167,5 +165,5 @@
 }
 
 .embla__slide {
-  flex: 0 0 16.666%;
+  flex: 0 0 20%;
 }

@@ -11,7 +11,7 @@ const basicFetch = async (att: string) => {
         },
     })
 
-    const {results} = await response.json()
+    const { results } = await response.json()
     return results;
 }
 
@@ -26,6 +26,19 @@ const movieFetch = async (id: string, type: string) => {
 
     const result = await response.json()
     return result;
+}
+
+const genresFetch = async (id: string, type: string) => {
+    const response = await fetch(`${tmdbUrl}${type}/${id}/recommendations?language=pt-BR&page=1`, {
+            method: 'GET',
+            headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${tmdbToken}`
+            },
+        })
+
+    const { results } = await response.json()
+    return results;  
 }
 
 export default {
@@ -56,5 +69,14 @@ export default {
     },
     getSingleMovie: async (id: string, type: string) => {
         return  await movieFetch(id, type);
+    },
+    getGenresList: async (id: string, type: string) => {
+        return [
+            {
+                slug: "between",
+                title: "Semelhantes",
+                items: await genresFetch(id, type)
+            }
+        ]
     }
 }

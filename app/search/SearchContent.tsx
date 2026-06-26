@@ -31,7 +31,7 @@ export default function SearchPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const q = searchParams.get("q") || "";
-  const page = searchParams.get("page") || 1;
+  const page = Number(searchParams.get("page")) || 1;
   const type = searchParams.get("type") || "movie";
 
   const [midias,setMidias] = useState<any>(null)

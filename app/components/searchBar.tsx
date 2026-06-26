@@ -11,7 +11,7 @@ export default function SearchBar() {
   const handleSearch = () => {
     if (!search.trim()) return;
 
-    router.push(`/search?q=${encodeURIComponent(search)}`);
+    router.push(`/search?q=${encodeURIComponent(search)}&type=movie&page=1`);
   };
 
   return (

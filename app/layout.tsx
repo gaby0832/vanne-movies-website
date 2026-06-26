@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Search } from 'lucide-react';
 import Image from "next/image";
+import SearchBar from "./components/searchBar";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -63,10 +64,7 @@ export default function RootLayout({
               <Link href="/">Comédia</Link>
             </div>
 
-            <label className="flex gap-4 w-100 h-10 bg-[#0E0E0E] rounded-md">
-              <input type="text" className="text-sm w-full h-full bg-transparent px-3 rounded-md outline-none decoration-[#4A4A4A]" placeholder="Buscar..."/>
-              <button className="h-full px-3 flex jusfify-center items-center cursor-pointer"><Search color="#4A4A4A" size={20}/></button>
-            </label>
+            <SearchBar/>
 
           </nav>
         </header>

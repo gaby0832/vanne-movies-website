@@ -41,6 +41,23 @@ const genresFetch = async (id: string, type: string) => {
     return results;  
 }
 
+const fetchSearchMidias = async (query: string | null, page: number) => {
+    if(query){
+    const response = await fetch(`${tmdbUrl}search/multi?query=${query}&include_adult=false&language=pt-BR&page=${page}`, {
+            method: 'GET',
+            headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${tmdbToken}`
+            },
+        })
+
+    const result = await response.json()
+    return result;  
+    } else {
+        return [{ error: 'Nenhuma query encontrada' }]
+    }
+}
+
 export default {
     getHomeList: async () => {
         return [
@@ -78,5 +95,8 @@ export default {
                 items: await genresFetch(id, type)
             }
         ]
+    },    
+    getSearchList: async (query: string | null, page: number) => {
+        return await fetchSearchMidias(query, page);
     }
 }

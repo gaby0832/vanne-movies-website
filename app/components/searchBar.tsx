@@ -15,7 +15,7 @@ export default function SearchBar() {
   };
 
   return (
-    <label className="flex gap-4 w-100 h-10 bg-[#0E0E0E] rounded-md">
+    <label className="hidden sm:flex gap-4 w-100 h-10 bg-[#0E0E0E] rounded-md">
       <input
         type="text"
         value={search}

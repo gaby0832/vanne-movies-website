@@ -155,7 +155,10 @@
 }
 
 
+
+
 .embla__viewport {
+  width: 100%;
   overflow: hidden;
 }
 
@@ -166,4 +169,24 @@
 
 .embla__slide {
   flex: 0 0 20%;
+}
+
+
+@media (max-width: 768px){
+  .embla__slide {
+
+    flex: 0 0 33.3333%;
+  }
+}
+
+@media (max-width: 715px){
+  .embla__slide {
+    flex: 0 0 33.33333%;
+
+  }
+
+      .embla {
+        width: 100%;
+  overflow: hidden;
+}
 }

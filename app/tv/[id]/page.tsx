@@ -47,16 +47,16 @@ export default function SingleMovie({
   if (!movie) return <Loading/>
   else
   return (
-    <div className="py-3 w-full max-w-6xl my-0 mx-auto flex flex-col gap-4 text-white bg-[#080808] font-sans">
+    <div className="sm:py-3 w-full max-w-6xl my-0 mx-auto flex flex-col gap-4 text-white bg-[#080808] font-sans">
       {movie ?  
-    <div className="my-5 w-full h-130 bg-black rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path}`}}>
-      <div className="w-full h-full bg-black/60 rounded-xl bg-center bg-cover flex flex-col gap-2 items-start justify-center px-10">
+    <div className="sm:my-5 my-0 w-full sm:h-130 h-auto bg-black sm:rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path}`}}>
+      <div className="sm:p-0 py-5 w-full h-full bg-black/60 sm:rounded-xl bg-center bg-cover flex flex-col gap-2 sm:items-start items-center justify-center sm:px-10 px-1">
         <h1 className="text-6xl font-semibold">Série</h1>
-        <h1 className="text-7xl font-bold">{movie.name}</h1>
-      <p className="font-light max-w-3xl">{movie.overview.length > 300 ? movie.overview.substring(0, 300)+"..." : movie.overview}</p>
-      <div>
-        <p>{movie.number_of_seasons > 1 ? "Temporadas" : "Temporada"}</p>
-        <div className="py-2 grid grid-cols-20 gap-2 w-full">
+        <h1 className="text-7xl font-bold text-center p-2 sm:p-0 sm:text-left">{movie.name}</h1>
+      <p className="font-light max-w-3xl text-center p-2 sm:p-0 sm:text-left">{movie.overview.length > 300 ? movie.overview.substring(0, 300)+"..." : movie.overview}</p>
+      <div className="sm:px-0 px-5 py-2 sm:justify-center sm:items-start justify-center items-center flex flex-col">
+        <p className="sm:px-0 px-5">{movie.number_of_seasons > 1 ? "Temporadas" : "Temporada"}</p>
+        <div className="sm:px-0 px-5 py-2 justify-center items-center sm:justify-center sm:items-start grid grid-cols-20 gap-2">
             {Array.from({ length: movie.number_of_seasons }, (_, i) => (
                 <button className="cursor-pointer w-10 h-10 flex justify-center items-center text-center rounded-4xl text-black bg-white" key={i}>
                 {i + 1}
@@ -76,7 +76,7 @@ export default function SingleMovie({
 
       {listRecomandation ? listRecomandation.map((index:any, key:number) =>(
                     <div className="w-full py-5" key={key}>
-                      <h1 className="text-xl font-semibold tracking-wide py-2">{index.title}</h1>
+                      <h1 className="p-3 sm:p-0 font-semibold tracking-wide py-2">{index.title}</h1>
                        <MovieList items={index.items} type="tv" /> 
                     </div>
             )) : ""}

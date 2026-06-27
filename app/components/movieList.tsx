@@ -23,7 +23,7 @@ export default function MovieList({ items, type }: {items: any[], type: string})
 
   <button
     onClick={scrollPrev}
-    className="absolute w-12 h-12 cursor-pointer text-center flex justify-center items-center bg-white text-black rounded-4xl left-[-12px] top-1/2 z-10"
+    className="absolute w-12 h-12 cursor-pointer text-center hidden md:flex justify-center items-center bg-white text-black rounded-4xl xl:left-[-12px] left-[0px] top-1/2 z-10"
     style={{top:"calc(50% - 12px)"}}
   >
     <ChevronLeft />
@@ -45,7 +45,7 @@ export default function MovieList({ items, type }: {items: any[], type: string})
 
           <button
     onClick={scrollNext}
-    className="absolute w-12 h-12 text-center cursor-pointer flex justify-center content-center items-center bg-white text-black right-[-12px] z-10 rounded-4xl"
+    className="absolute w-12 h-12 text-center cursor-pointer hidden md:flex justify-center content-center items-center bg-white text-black xl:right-[-12px] right-[0px] z-10 rounded-4xl"
     style={{top:"calc(50% - 12px)"}}
   >
     <ChevronRight />

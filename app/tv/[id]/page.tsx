@@ -1,7 +1,6 @@
 "use client"
 import Loading from "@/app/components/loadingOverlay";
 import { useEffect, useState } from "react";
-import tmdb from '../../tmdb/tmdb'
 import MovieList from "@/app/components/movieList";
 
 
@@ -11,6 +10,8 @@ export default function SingleMovie({
   params: Promise<{ id: string }>
 }) {
 
+
+    const api_path = process.env.NEXT_PUBLIC_API_PATH;
     const [movie, setMovie] = useState<any>(null);
     const [listRecomandation, setListRecomendation] = useState<any>(null)
   
@@ -22,10 +23,12 @@ export default function SingleMovie({
 
       const { id } = await params
 
-      const movie = await tmdb.getSingleMovie(id, "tv")
-      const list = await tmdb.getGenresList(id, "tv");
-      setMovie(movie);
-      setListRecomendation(list);
+      const response = await fetch(`${api_path}/api/midiaDetails?id=${id}&type=tv`);
+      const results = await response.json();
+      const { details, recommendationList } = await results[0];
+
+      setMovie(details);
+      setListRecomendation(recommendationList);
 
     } catch (error) {
       console.error('Erro de registro:', error);

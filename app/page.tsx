@@ -1,14 +1,11 @@
 "use client"
-import Image from "next/image";
-import { KeyObject } from "node:crypto";
 import { useEffect, useState } from "react";
 import MovieList from './components/movieList'
 import Loading from "./components/loadingOverlay";
-import tmdb from './tmdb/tmdb'
 export default function Home() {
 
 
-  
+    const api_path = process.env.NEXT_PUBLIC_API_PATH;
     const [moviesDay, setMoviesDay] = useState<any>(null)
     const [movies, setMovies] = useState<Array<any>>([]);
     const [media, setMedia] = useState<any>(null);
@@ -19,10 +16,12 @@ export default function Home() {
 
     try {
 
-      const Homelist = await tmdb.getHomeList()
-      const movieCount:number = await  Homelist[0].items.length;
+      const response = await fetch(`${api_path}/api/homeList`);
+      const Homelist = await response.json()
+
+      const movieCount:number = await Homelist[0].items.length;
       const randomInt:number = await Math.floor(Math.random() * (movieCount - 0 + 1)) + 0;   
-      const randomMovie = await  Homelist[0].items[randomInt]; 
+      const randomMovie = await Homelist[0].items[randomInt]; 
       
       setMovies(Homelist);
       setMedia(!moviesDay ? randomMovie : moviesDay);
@@ -45,7 +44,7 @@ export default function Home() {
       {media ?  
     <div className="sm:my-5 my-0 w-full h-120 bg-black sm:rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${media.backdrop_path})`}}>
       <div className="w-full h-full bg-black/60 sm:rounded-xl bg-center bg-cover flex flex-col gap-2 sm:items-start items-center justify-center sm:px-10">
-      <h1 className="text-6xl font-semibold">{!moviesDay ? "Recomendação" : "React"}</h1>
+      <h1 className="text-3xl sm:text-6xl font-semibold">{!moviesDay ? "Recomendação" : "React"}</h1>
         <h1 className="text-7xl font-bold text-center p-2 sm:p-0 sm:text-left">{media.title ? media.title : media.name}</h1>
       <p className="font-light max-w-3xl w-full px-3 sm:p-0 sm:text-left text-center">{media.overview.length > 300 ? media.overview.substring(0, 300)+"..." : media.overview}</p>
       <div className="py-2 grid grid-cols-2 gap-4 w-full max-w-2xs">

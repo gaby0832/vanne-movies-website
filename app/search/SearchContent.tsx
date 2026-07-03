@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from "next/navigation";
-import tmdb from '../tmdb/tmdb'
 import Image from 'next/image';
 import Link from 'next/link';
 import Loading from "../components/loadingOverlay";
@@ -27,6 +26,8 @@ import {
 
 
 export default function SearchPage() {
+
+  const api_path = process.env.NEXT_PUBLIC_API_PATH;
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -56,17 +57,21 @@ export default function SearchPage() {
 
   useEffect(()=>{
     async function search(){
-      const list = await tmdb.getSearchList(type,q, page);
-      if(list.error){
+
+      const response = await fetch(`${api_path}/api/search?q=${q}&type=${type}&page=${page}`);
+      const list = await response.json();
+
+      await console.log(list)
+      if(!list){
         setMidias(null)
-        setErrorMessage(list.message)
+        setErrorMessage("Nenhum resultado encontrado")
       }else{
         setMidias(list)
       }
-      console.log(list)
-      console.log(page)
+
     }
     if(q) search()
+
   },[type,q,page])
 
   const changePage = (newPage: number) => {

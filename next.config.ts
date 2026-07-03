@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  devIndicators: false,
+  // Exclui caches do rastreamento de arquivos
+  outputFileTracingExcludes: {
+    "*": ["cache/**/*", ".next/cache/**/*"],
+  },
 };
 
 export default nextConfig;

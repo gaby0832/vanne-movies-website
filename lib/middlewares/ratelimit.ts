@@ -15,6 +15,7 @@ export function checkRateLimit(ip: string, limit: number, interval: number): { s
     requests.set(ip, { count: 0, firstRequest: now });
   }
 
+
   const data = requests.get(ip)!;
 
   // Reset se passou do intervalo

@@ -3,6 +3,7 @@ import Loading from "@/app/components/loadingOverlay";
 import { useEffect, useState } from "react";
 import MovieList from "@/app/components/movieList";
 
+export const runtime = 'edge';
 
 export default function SingleMovie({
   params

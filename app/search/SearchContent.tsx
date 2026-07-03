@@ -121,7 +121,9 @@ export default function SearchPage() {
         {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         midias?.results
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .filter((item: any) => item.poster_path !== null && item.poster_path !== undefined)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .map((item: any) => (
             <div className="w-full py-5" key={item.id}>
               <Link href={`/${type === "movie" ? "movie" : "tv"}/${item.id}`}>

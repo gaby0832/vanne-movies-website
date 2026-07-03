@@ -12,7 +12,9 @@ export default function SingleMovie({
 
 
     const api_path = process.env.NEXT_PUBLIC_API_PATH;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [movie, setMovie] = useState<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [listRecomandation, setListRecomendation] = useState<any>(null)
   
 
@@ -77,7 +79,9 @@ export default function SingleMovie({
       }
 
 
-      {listRecomandation ? listRecomandation.map((index:any, key:number) =>(
+      {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      listRecomandation ? listRecomandation.map((index:any, key:number) =>(
                     <div className="w-full py-5" key={key}>
                       <h1 className="p-3 sm:p-0 font-semibold tracking-wide py-2">{index.title}</h1>
                        <MovieList items={index.items} type="tv" /> 

@@ -2,11 +2,11 @@
 import '../globals.css'
 import Image from "next/image";
 import Link from "next/link";
-import { KeyObject } from "node:crypto";
 import React from "react";
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function MovieList({ items, type }: {items: any[], type: string}) {
 
   
@@ -33,7 +33,10 @@ export default function MovieList({ items, type }: {items: any[], type: string})
 
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {items ? items.map((index:any, key:number) =>(
+          {
+          
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          items ? items.map((index:any, key:number) =>(
             <div className="embla__slide" key={key} >
               <Link href={`/${type !== "all" || index.media_type === undefined? type : index.media_type}/${index.id}`}>
                 <Image loading="eager" className="rounded-xl cursor-pointer scale-90 hover:scale-95 transition-transform" width={350} height={0} src={`https://media.themoviedb.org/t/p/w220_and_h330_face${index.poster_path}`} alt={index.title ? index.title : index.name}/>

@@ -35,7 +35,9 @@ export default function SearchPage() {
   const page = Number(searchParams.get("page")) || 1;
   const type = searchParams.get("type") || "movie";
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [midias,setMidias] = useState<any>(null)
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
 
@@ -116,7 +118,9 @@ export default function SearchPage() {
 </Select>
 
         <div className="max-w-6xl my-0 mx-auto grid grid-cols-6 gap-4 text-white font-sans">
-        {midias?.results
+        {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        midias?.results
           .filter((item: any) => item.poster_path !== null && item.poster_path !== undefined)
           .map((item: any) => (
             <div className="w-full py-5" key={item.id}>

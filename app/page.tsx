@@ -6,8 +6,11 @@ export default function Home() {
 
 
     const api_path = process.env.NEXT_PUBLIC_API_PATH;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [moviesDay, setMoviesDay] = useState<any>(null)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [movies, setMovies] = useState<Array<any>>([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [media, setMedia] = useState<any>(null);
   
 
@@ -57,7 +60,9 @@ export default function Home() {
       ""
       }
 
-      {movies ? movies.map((index:any, key:number) =>(
+      {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any  
+      movies ? movies.map((index:any, key:number) =>(
         <div className="w-full py-5" key={key}>
           <h1 className="px-3 sm:p-0 text-xl font-semibold tracking-wide py-2">{index.title}</h1>
            <MovieList items={index.items} type={index.type} /> 

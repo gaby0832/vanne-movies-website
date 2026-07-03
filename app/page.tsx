@@ -32,6 +32,7 @@ export default function Home() {
     } catch (error) {
       console.error('Erro de registro:', error);
     } finally {
+      
     }
   };
        handleRegister()

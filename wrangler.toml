@@ -1,4 +1,4 @@
-name = "vanne-movie-website"
+name = "vanne-movies-website"
 compatibility_date = "2026-07-03"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"

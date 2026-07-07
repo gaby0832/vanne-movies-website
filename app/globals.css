@@ -190,3 +190,15 @@
   overflow: hidden;
 }
 }
+
+@media (max-width: 360px){
+  .embla__slide {
+    flex: 0 0 50%;
+
+  }
+
+      .embla {
+        width: 100%;
+  overflow: hidden;
+}
+}

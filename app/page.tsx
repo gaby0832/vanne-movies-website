@@ -49,7 +49,7 @@ export default function Home() {
     <div className="sm:my-5 my-0 w-full h-120 bg-black sm:rounded-xl bg-center bg-cover" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${media.backdrop_path})`}}>
       <div className="w-full h-full bg-black/60 sm:rounded-xl bg-center bg-cover flex flex-col gap-2 sm:items-start items-center justify-center sm:px-10">
       <h1 className="text-3xl sm:text-6xl font-semibold">{!moviesDay ? "Recomendação" : "React"}</h1>
-        <h1 className="text-7xl font-bold text-center p-2 sm:p-0 sm:text-left">{media.title ? media.title : media.name}</h1>
+        <h1 className="sm:text-7xl text-5xl font-bold text-center p-2 sm:p-0 sm:text-left">{media.title ? media.title : media.name}</h1>
       <p className="font-light max-w-3xl w-full px-3 sm:p-0 sm:text-left text-center">{media.overview.length > 300 ? media.overview.substring(0, 300)+"..." : media.overview}</p>
       <div className="py-2 grid grid-cols-2 gap-4 w-full max-w-2xs">
         {moviesDay ?  <button className="text-sm w-full h-full bg-[#03C210]/25 text-[#03C210] px-3 rounded-3xl outline-none decoration-[#4A4A4A] py-3 border-[0.2] border-[#03C210]">Hoje</button> : ""}

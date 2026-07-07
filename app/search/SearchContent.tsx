@@ -64,9 +64,9 @@ export default function SearchPage() {
       const list = await response.json();
 
       await console.log(list)
-      if(!list){
+      if(list.error){
         setMidias(null)
-        setErrorMessage("Nenhum resultado encontrado")
+        setErrorMessage(list.message)
       }else{
         setMidias(list)
       }
@@ -88,15 +88,15 @@ export default function SearchPage() {
   return (
     <div className='py-3 w-full max-w-6xl my-0 mx-auto flex flex-col gap-2 text-white font-sans'>
         
-        {q && <h1 className="text-xl text-left">Pesquisa: {q} </h1>}
+        {q && <h1 className="px-4 lg:px-0 text-xl text-left">Pesquisa: {q} </h1>}
         
         {errorMessage ? 
         
-        <h1 className="text-[#353535]">{errorMessage}</h1>
+        <h1 className="px-4 lg:px-0 text-[#353535]">{errorMessage}</h1>
         
         :
         
-        midias && <h1 className="text-[#353535]">{midias.total_results} resultados encontrados</h1>
+        <h1 className="px-4 lg:px-0 text-[#353535]">{midias.total_results} resultados encontrados</h1>
 
         }
 
@@ -104,9 +104,10 @@ export default function SearchPage() {
   onValueChange={(value) => {
     changeType(value);
   }}
+  value="movie"
 >
-  <SelectTrigger className="my-4 w-full max-w-48">
-    <SelectValue placeholder="Tipo de mídia" />
+  <SelectTrigger className="mx-4 lg:mx-0 my-4 w-full max-w-48">
+    <SelectValue placeholder="Tipo de mídia"/>
   </SelectTrigger>
 
   <SelectContent>
@@ -117,10 +118,11 @@ export default function SearchPage() {
   </SelectContent>
 </Select>
 
-        <div className="max-w-6xl my-0 mx-auto grid grid-cols-6 gap-4 text-white font-sans">
-        {
+        <div className="max-w-6xl my-0 mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-4 text-white font-sans">
+        {midias && !errorMessage ?
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        midias?.results
+        midias.results
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .filter((item: any) => item.poster_path !== null && item.poster_path !== undefined)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -137,12 +139,13 @@ export default function SearchPage() {
                 />
               </Link>
             </div>
-          ))}
+          )) :
+          ""}
         </div>
 
 
 
-        <Pagination className="my-10">
+        <Pagination className="my-5">
            <PaginationContent>
 
             {Number(page) >= 5 ?

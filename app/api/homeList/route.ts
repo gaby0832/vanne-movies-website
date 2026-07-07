@@ -6,7 +6,7 @@ import { checkRateLimit }  from '@/lib/middlewares/ratelimit';
 export async function GET(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for") || "127.0.0.1";
 
-  const limit = 5;
+  const limit = 15;
   const interval = 60000; 
 
   const { success, remaining } = checkRateLimit(ip, limit, interval);

@@ -45,7 +45,7 @@ export default function RootLayout({
       
       <body className="min-h-full flex flex-col bg-[#080808]" cz-shortcut-listen="true">
         <header className="z-40 fixed w-full h-16 bg-[#080808]">
-          <nav className="text-white max-w-6xl h-full flex gap-3 my-0 mx-auto items-center justify-center sm:justify-between items-center">
+          <nav className="text-white max-w-6xl h-full flex gap-3 my-0 mx-auto items-center justify-between items-center">
 
             <Link href="/">
                 <Image
@@ -65,6 +65,14 @@ export default function RootLayout({
             </div>
 
             <SearchBar/>
+
+            <button
+                    type="button"
+                    className="h-full px-3 sm:hidden flex  
+                    justify-center items-center cursor-pointer"
+                  >
+                    <Search color="#4A4A4A" size={20} />
+                  </button>
 
           </nav>
         </header>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import Providers from "./providers";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Search } from 'lucide-react';
@@ -18,6 +18,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  icons: {
+    icon: "/logo.png",
+  },
+  openGraph: {
+    title: 'Vanne Filmes Oficial',
+    description: 'Plataforma de doações para react de filmes',
+    images: ['/logonav.png'],
+  },
+  title: "Vanne Filmes Oficial",
+  description: "Plataforma de doações para react de filmes",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,8 +43,11 @@ export default function RootLayout({
     >
       
       <body className="min-h-full flex flex-col bg-[#080808]" cz-shortcut-listen="true">
+
         <div className="min-h-full flex flex-col">
-            {children}
+            <Providers>
+              {children}
+            </Providers>
         </div>
         </body>
     </html>

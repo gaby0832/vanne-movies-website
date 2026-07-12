@@ -1,10 +1,10 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { cookies } from "next/headers";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { checkRateLimit } from "@/lib/middlewares/ratelimit";
 import { NextResponse } from "next/server";
+import { createToken } from "@/lib/jwt";
 
 export async function POST(req: Request){
   const {
@@ -58,7 +58,6 @@ export async function POST(req: Request){
 
     const user=result.rows[0];
 
-    console.log(user)
 
     const ok=await bcrypt.compare(password,user.password);
 
@@ -71,16 +70,10 @@ export async function POST(req: Request){
 
     }
 
-    const token=jwt.sign({
-
-        id:user.id,
-        email:user.email
-
-    },process.env.JWT_SECRET!,{
-
-        expiresIn:"7d"
-
-    });
+    const token = await createToken({
+  id: user.id,
+  email: user.email,
+});
 
      const cookieStore = await cookies();
 

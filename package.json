@@ -12,11 +12,11 @@
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",
     "@marsidev/react-turnstile": "^1.5.3",
-    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
-    "jsonwebtoken": "^9.0.3",
+    "jose": "^6.2.3",
     "lucide-react": "^1.17.0",
     "next": "15.5.2",
     "pg": "^8.22.0",

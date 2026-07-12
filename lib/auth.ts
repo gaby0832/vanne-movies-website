@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { db } from "./db";
+import { verifyToken } from "./jwt";
 
 export async function getCurrentUser() {
   const cookieStore = await cookies();
@@ -10,14 +11,13 @@ export async function getCurrentUser() {
   if (!token) return null;
 
   try {
-    const payload = jwt.verify(
-      token,
-      process.env.JWT_SECRET!
-    ) as { id: number };
+    const payload = await verifyToken(token);
+
+    const id = payload.id;
 
     const result = await db.query(
       "SELECT id, name, email, avatar_url FROM users WHERE id = $1",
-      [payload.id]
+      [id]
     );
 
 
@@ -31,5 +31,3 @@ export async function getCurrentUser() {
     return null;
   }
 }
-
-export const runtime = "nodejs";

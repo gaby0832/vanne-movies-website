@@ -14,17 +14,19 @@ export async function getCurrentUser() {
 
     const id = payload.id;
 
-    const result = await db.query(
-      "SELECT id, name, email, avatar_url FROM users WHERE id = $1",
-      [id]
-    );
+    const result = await db`
+      SELECT *
+      FROM users
+      WHERE id = ${id}
+    `;
 
+    const user = result[0];
 
     return {
-        id: result.rows[0].id,
-        name: result.rows[0].name,
-        email: result.rows[0].email,
-        avatar_url: result.rows[0].avatar_url,
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        avatar_url: user.avatar_url,
     }
   } catch {
     return null;

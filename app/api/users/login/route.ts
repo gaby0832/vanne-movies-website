@@ -41,12 +41,13 @@ export async function POST(req: Request){
     );
   }
 
-    const result = await db.query(
-        "SELECT * FROM users WHERE email=$1",
-        [email]
-    );
+    const result = await db`
+    SELECT *
+    FROM users
+    WHERE email = ${email}
+    `;
 
-    if(result.rows.length===0){
+    if(result.length===0){
 
         console.log('Usuário não encontrado')
 
@@ -56,7 +57,7 @@ export async function POST(req: Request){
 
     }
 
-    const user=result.rows[0];
+    const user=result[0];
 
 
     const ok=await bcrypt.compare(password,user.password);

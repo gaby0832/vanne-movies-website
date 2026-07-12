@@ -82,22 +82,27 @@ const login = async (email: string, password: string, turnstileToken:string) => 
 
 
   useEffect(() => {
-
-     async function loadUser() {
-
+  async function loadUser() {
+    try {
       const res = await fetch("/api/users/me");
+
+      if (!res.ok) {
+        setUser(null);
+        return;
+      }
 
       const data = await res.json();
 
-      await console.log(data)
-
       setUser(data);
-
+    } catch (err) {
+      console.error(err);
+      setUser(null);
+    } finally {
       setLoading(false);
-
-
     }
-    loadUser();
+  }
+
+  loadUser();
   }, []);
 
   return (

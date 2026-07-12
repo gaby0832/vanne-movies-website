@@ -1,8 +1,6 @@
 "use client";
 
 import { AuthProvider } from "./contexts/AuthContext";
-import { UserProvider } from "./contexts/UserDataContext";
-
 export default function Providers({
   children,
 }: {
@@ -10,9 +8,7 @@ export default function Providers({
 }) {
   return (
     <AuthProvider>
-      <UserProvider>
         {children}
-      </UserProvider>
     </AuthProvider>
   );
 }

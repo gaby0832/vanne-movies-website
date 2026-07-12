@@ -31,3 +31,5 @@ export async function getCurrentUser() {
     return null;
   }
 }
+
+export const runtime = "nodejs";

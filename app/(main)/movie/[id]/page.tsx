@@ -1,7 +1,7 @@
 "use client"
-import Loading from "@/app/components/loadingOverlay";
+import Loading from "../../components/loadingOverlay";
 import { useEffect, useState } from "react";
-import MovieList from "@/app/components/movieList";
+import MovieList from "../../components/movieList";
 
 export const runtime = 'edge';
 

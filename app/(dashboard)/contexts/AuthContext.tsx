@@ -13,7 +13,19 @@ interface User {
     avatar_url: string, 
 }
 
-const AuthContext = createContext(null);
+type AuthContextType = {
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  loading: boolean;
+  login: (
+    email: string,
+    password: string,
+    turnstileToken: string
+  ) => Promise<void>;
+  logout: () => Promise<void>;
+};
+
+const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({
   children,
@@ -103,5 +115,11 @@ const login = async (email: string, password: string, turnstileToken:string) => 
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth must be used within AuthProvider");
+  }
+
+  return context;
 }

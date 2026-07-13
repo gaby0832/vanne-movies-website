@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={cn("h-full antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)} suppressHydrationWarning>
+    <html lang="pt-BR" className={`${cn("h-full antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)} dark`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-[#080808]">
         {children}
       </body>

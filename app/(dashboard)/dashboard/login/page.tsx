@@ -93,7 +93,7 @@ const [turnstileToken, setTurnstileToken] = useState("");
 
           <button
             type="submit"
-            disabled={loading || !turnstileToken}
+            //disabled={loading || !turnstileToken}
             className="px-4 rounded-lg bg-blue-600 py-3 font-medium text-white text-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Entrando..." : "Entrar"}

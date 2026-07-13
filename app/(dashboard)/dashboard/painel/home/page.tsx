@@ -38,11 +38,11 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="h-screen max-h-screen bg-zinc-950 text-white">
+    <main className="h-full bg-[#0A0A0A] text-white rounded-lg">
 
 
       <section className="mx-auto py-8 max-w-7xl px-8">
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8 shadow-lg">
+        <div className="p-8">
           <div className="flex items-center gap-6">
             <img
               src={user.avatar_url}

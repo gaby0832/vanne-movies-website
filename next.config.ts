@@ -4,13 +4,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'media.themoviedb.org',
+        protocol: "https",
+        hostname: "media.themoviedb.org",
       },
     ],
   },
   devIndicators: false,
-  // Exclui caches do rastreamento de arquivos
   outputFileTracingExcludes: {
     "*": ["cache/**/*", ".next/cache/**/*"],
   },

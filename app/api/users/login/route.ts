@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cookies } from "next/headers";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { checkRateLimit } from "@/lib/middlewares/ratelimit";
@@ -41,7 +41,8 @@ export async function POST(req: Request){
     );
   }
 
-    const result = await db`
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await getDb()`
     SELECT *
     FROM users
     WHERE email = ${email}

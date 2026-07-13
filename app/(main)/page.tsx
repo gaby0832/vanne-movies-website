@@ -19,7 +19,7 @@ export default function Home() {
 
     try {
 
-      const response = await fetch(`${api_path}/api/homeList`);
+      const response = await fetch(`/api/homeList`);
       const Homelist = await response.json()
 
       const movieCount:number = await Homelist[0].items.length;

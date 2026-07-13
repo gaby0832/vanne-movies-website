@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { db } from "./db";
+import { getDb } from "./db";
 import { verifyToken } from "./jwt";
 
 export async function getCurrentUser() {
@@ -14,7 +14,8 @@ export async function getCurrentUser() {
 
     const id = payload.id;
 
-    const result = await db`
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await getDb()`
       SELECT *
       FROM users
       WHERE id = ${id}

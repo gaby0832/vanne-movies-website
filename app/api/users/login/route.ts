@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import { compare } from "bcrypt-ts";
 import { getDb } from "@/lib/db";
 import { cookies } from "next/headers";
 import { verifyTurnstile } from "@/lib/turnstile";
@@ -27,19 +27,23 @@ export async function POST(req: Request){
       );
     }
   
+  if(process.env.NODE_ENV == "production"){
 
   const valid = await verifyTurnstile(turnstileToken);
 
-  if (!valid) {
-    return Response.json(
-      {
-        error: "Falha na verificação do Turnstile.",
-      },
-      {
-        status: 400,
-      }
-    );
+    if (!valid) {
+      return Response.json(
+        {
+          error: "Falha na verificação do Turnstile.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+    
   }
+
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const result: any = await getDb()`
@@ -61,7 +65,7 @@ export async function POST(req: Request){
     const user=result[0];
 
 
-    const ok=await bcrypt.compare(password,user.password);
+    const ok = await compare(password,user.password);
 
     if(!ok){
 

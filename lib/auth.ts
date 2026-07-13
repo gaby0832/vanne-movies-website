@@ -28,6 +28,7 @@ export async function getCurrentUser() {
         name: user.name,
         email: user.email,
         avatar_url: user.avatar_url,
+        is_dev: user.is_dev
     }
   } catch {
     return null;

@@ -11,7 +11,8 @@ interface User {
     id: number,
     name: string,
     email: string,
-    avatar_url: string, 
+    avatar_url: string,
+    is_dev: boolean 
 }
 
 type AuthContextType = {

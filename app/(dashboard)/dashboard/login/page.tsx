@@ -21,7 +21,7 @@ const [turnstileToken, setTurnstileToken] = useState("");
     try {
       await login(email, password, turnstileToken);
 
-      router.replace("/dashboard");
+      router.replace("/dashboard/painel/home");
     } catch (err) {
       console.log(err);
     }
@@ -31,26 +31,13 @@ const [turnstileToken, setTurnstileToken] = useState("");
 
     useEffect(() => {
       if (user) {
-        router.replace("/dashboard");
+        router.replace("/dashboard/painel/home");
       }
     }, [loading, user, router]);
   
-    if (loading) {
-      return (
-        <main className="flex min-h-screen items-center justify-center bg-zinc-950">
-          <div className="flex flex-col items-center gap-4">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-zinc-700 border-t-blue-500" />
-  
-            <p className="text-zinc-400">
-              Verificando autenticação...
-            </p>
-          </div>
-        </main>
-      );
-    }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 bg-cover bg-center" style={{backgroundImage: "url(https://res.cloudinary.com/dqx5v6hfi/image/upload/v1783950623/image_4_dvvx0s.png)"}}>
       <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-8 shadow-xl">
         <h1 className="mb-2 text-3xl font-bold text-white">
           Painel Administrativo
@@ -71,7 +58,7 @@ const [turnstileToken, setTurnstileToken] = useState("");
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white outline-none transition focus:border-blue-500"
+              className="w-full rounded-sm border text-sm border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition focus:border-blue-500"
               placeholder="admin@email.com"
             />
           </div>
@@ -86,7 +73,7 @@ const [turnstileToken, setTurnstileToken] = useState("");
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white outline-none transition focus:border-blue-500"
+              className="w-full rounded-sm border text-sm border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition focus:border-blue-500"
               placeholder="********"
             />
           </div>
@@ -97,16 +84,17 @@ const [turnstileToken, setTurnstileToken] = useState("");
             </div>
           )}
 
-
+          {process.env.NODE_ENV == "production" &&
           <Turnstile
             siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
             onSuccess={(token) => setTurnstileToken(token)}
           />
+            }
 
           <button
             type="submit"
             disabled={loading || !turnstileToken}
-            className="w-full rounded-lg bg-blue-600 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="px-4 rounded-lg bg-blue-600 py-3 font-medium text-white text-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Entrando..." : "Entrar"}
           </button>

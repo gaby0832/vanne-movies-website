@@ -61,7 +61,7 @@ export default function PainelLayout({ children }: { children: React.ReactNode }
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
+              <a href="/">
                 <h1 className="text-2xl font-bold">
                   <Image width={200} height={100} className="w-full h-auto" src="/painelLogo.png" alt="painel logo"/>
                 </h1>

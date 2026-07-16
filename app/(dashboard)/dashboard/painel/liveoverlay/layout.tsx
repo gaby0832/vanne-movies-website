@@ -1,29 +1,23 @@
 
 import { Metadata } from "next";
-import Providers from "./providers";
-
 export const metadata: Metadata = {
   icons: {
     icon: "/logo.png",
   },
   openGraph: {
-    title: 'Dashboard - Login',
+    title: 'Dashboard - Live Overlay',
     description: 'Plataforma de doações para react de filmes',
     images: ['/logonav.png'],
   },
-  title: "Dashboard - Login",
+  title: "Dashboard - Live Overlay",
   description: "Plataforma de doações para react de filmes",
 };
 
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col">
-      
-      <Providers>
-          {children}
-      </Providers>
-
-    </div>
+    <>
+    	{children}
+    </>
   );
 }

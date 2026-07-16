@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: 'Plataforma de doações para react de filmes',
     images: ['/logonav.png'],
   },
-  title: "Dashboard - Login",
+  title: "Dashboard - Painel",
   description: "Plataforma de doações para react de filmes",
 };
 
@@ -42,18 +42,18 @@ export default function PainelLayout({ children }: { children: React.ReactNode }
           "--header-height": "calc(var(--spacing) * 12)",
         } as React.CSSProperties
       }>
-    <div className="w-full h-full bg-[#171717] max-h-screen text-white flex">
+    <div className="w-full h-full bg-[#171717] max-h-screen text-white flex gap-0">
 
 
 
 
 
               <header className="w-[300px] h-screen  max-h-screen">
-        <div className="flex flex-col h-full max-w-7xl items-center justify-between px-4 py-4">
+        <div className="flex flex-col h-full max-w-7xl items-center justify-between py-4 border-0">
           
 
 
-    <Sidebar collapsible="offcanvas" className="bg-hidden bg-transparent  bg-[#171717] py-4 border-0 justify-between items-between h-screen">
+    <Sidebar collapsible="offcanvas" className="bg-hidden bg-transparent  bg-[#171717] py-4 border-0 justify-between items-between h-screen shadow-none" style={{border: "0px !important", boxShadow: "0 0 #0000 !important"}}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -83,11 +83,11 @@ export default function PainelLayout({ children }: { children: React.ReactNode }
               </SidebarMenuButton>
             </SidebarMenuItem><SidebarMenuItem>
               <SidebarMenuButton>
-                <Link href="/dashboard/painel/home" className="flex items-center gap-2"><PictureInPicture2/>Live Overlay</Link>
+                <Link href="/dashboard/painel/liveoverlay" className="flex items-center gap-2"><PictureInPicture2/>Live Overlay</Link>
               </SidebarMenuButton>
             </SidebarMenuItem><SidebarMenuItem>
               <SidebarMenuButton>
-                <Link href="/dashboard/painel/home" className="flex items-center gap-2"><Clapperboard/>Lista de filmes</Link>
+                <Link href="/dashboard/painel/movielist" className="flex items-center gap-2"><Clapperboard/>Lista de filmes</Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>

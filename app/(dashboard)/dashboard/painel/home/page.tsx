@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../../contexts/AuthContext";
+import { LayoutDashboard } from "lucide-react";
 
 export default function DashboardPage() {
   const { user, loading, logout } = useAuth();
@@ -31,19 +32,13 @@ export default function DashboardPage() {
 
   if (!user) return null;
 
-  async function handleLogout() {
-    await logout();
-
-    router.replace("/dashboard/login");
-  }
-
   return (
     <main className="h-full bg-[#0A0A0A] text-white rounded-lg">
 
 
       <section className="mx-auto py-8 max-w-7xl px-8">
-        <div className="p-8">
-      
+        <div>
+        <h1 className="flex gap-2 align-center"><LayoutDashboard /> Dashboard</h1>
         </div>
       </section>
     </main>

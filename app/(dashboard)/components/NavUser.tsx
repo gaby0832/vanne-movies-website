@@ -86,7 +86,7 @@ export default function NavUser() {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuItem>
-              <button onClick={handleLogout} className="flex items-center gap-2">
+              <button onClick={handleLogout} className="w-full h-full flex items-center gap-2">
                 <IconLogout />
                 Log out
                 </button>

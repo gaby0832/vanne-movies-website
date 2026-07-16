@@ -79,15 +79,15 @@ export default function PainelLayout({ children }: { children: React.ReactNode }
         <SidebarMenu className="text-white">
           <SidebarMenuItem>
               <SidebarMenuButton>
-                <Link href="/dashboard/painel/home" className="flex items-center gap-2"><LayoutDashboard />Dashboard</Link>
+                <Link href="/dashboard/painel/home" className="w-full h-full flex items-center gap-2"><LayoutDashboard />Dashboard</Link>
               </SidebarMenuButton>
             </SidebarMenuItem><SidebarMenuItem>
               <SidebarMenuButton>
-                <Link href="/dashboard/painel/liveoverlay" className="flex items-center gap-2"><PictureInPicture2/>Live Overlay</Link>
+                <Link href="/dashboard/painel/liveoverlay" className="w-full h-full flex items-center gap-2"><PictureInPicture2/>Live Overlay</Link>
               </SidebarMenuButton>
             </SidebarMenuItem><SidebarMenuItem>
               <SidebarMenuButton>
-                <Link href="/dashboard/painel/movielist" className="flex items-center gap-2"><Clapperboard/>Lista de filmes</Link>
+                <Link href="/dashboard/painel/movielist" className="w-full h-full flex items-center gap-2"><Clapperboard/>Lista de filmes</Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
